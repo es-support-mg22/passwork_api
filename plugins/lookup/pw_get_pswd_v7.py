@@ -21,7 +21,7 @@ options:
         description: Ключ шифрования для шифрования на стороне клиента
         required: false
         type: str
-    password_path:
+    path:
         description: Путь до пароля
         required: true
         type: str
@@ -53,8 +53,10 @@ class LookupModule(LookupBase):
         master_key: str = self.get_option('master_key')
         password_path: str = self.get_option('path')
 
-
         with pw_login(api_server,access_token,refresh_token,master_key) as pwClient:
             password = get_password_by_path(pwClient,password_path)
-            response= pwClient.get_item(password['id'])
+            if (password != None):
+                response= pwClient.get_item(password['id'])
+            else: 
+                return []
             return [response]
