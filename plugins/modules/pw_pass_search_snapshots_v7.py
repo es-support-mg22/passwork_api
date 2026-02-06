@@ -1,6 +1,6 @@
 from typing import Any
 from ansible.module_utils.basic import AnsibleModule
-from passwork_common_v7 import get_vault, pw_login, get_folder
+from ansible_collections.es_support_mg22.passwork_api.plugins.module_utils.passwork_common_v7 import get_vault, pw_login, get_folder
 
 
 DOCUMENTATION = r'''
